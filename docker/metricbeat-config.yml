@@ -1,0 +1,28 @@
+# Needed for Graylog
+fields_under_root: true
+fields.collector_node_id: ${sidecar.nodeName}
+fields.gl2_source_collector: ${sidecar.nodeId}
+
+metricbeat.modules:
+- module: system
+  metricsets:
+    - cpu
+    - load
+    - memory
+    - uptime
+  enabled: true
+  period: 10s
+  processes: ['.*']
+- module: docker
+  metricsets:
+    - "container"
+    - "info"
+  hosts: ["unix:///var/run/docker.sock"]
+  period: 10s
+  enabled: true
+
+output.logstash:
+   hosts: ["10.22.33.100:5044"]
+path:
+  data: /var/lib/graylog-sidecar/collectors/metricbeat/data
+  logs: /var/lib/graylog-sidecar/collectors/metricbeat/log

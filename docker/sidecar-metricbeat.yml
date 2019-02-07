@@ -1,0 +1,7 @@
+server_url: "http://10.22.33.100:9000/api/"
+server_api_token: "1kvkcrmpl296dacgg5enl7cb5d9g7g6gbo9cijg8hkolqu184n9j"
+node_id: "devopsmuc-2019-metricbeat"
+#node_name: ""
+#list_log_files: []
+collector_binaries_whitelist:
+  - "/usr/bin/metricbeat"

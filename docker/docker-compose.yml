@@ -1,0 +1,116 @@
+version: '2.4'
+networks:
+  graylog.net:
+    enable_ipv6: false
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.22.33.0/24
+volumes:
+  graylog.data.elastic:
+    driver: "local"
+  graylog.data.mongo:
+    driver: "local"
+  graylog.data.flog:
+    driver: "local"
+services:
+  mongo:
+    image: mongo:4.0
+    container_name: mongo
+    hostname: mongo
+    command: --quiet --noauth
+    mem_limit: 128m
+    ports:
+      - 27017:27017
+    volumes:
+      - graylog.data.mongo:/data/db
+    networks:
+      - graylog.net
+  elasticsearch:
+    image: elastic/elasticsearch:6.6.0
+    container_name: elasticsearch
+    hostname: elasticsearch
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    mem_limit: 2g
+    environment:
+      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
+      - discovery.type=single-node
+      - http.host=0.0.0.0
+      - network.host=0.0.0.0
+      - bootstrap.memory_lock=true
+      - xpack.security.enabled=false
+    volumes:
+      - graylog.data.elastic:/usr/share/elasticsearch/data
+    networks:
+      - graylog.net
+    ports:
+      - "9200:9200"
+  graylog:
+    build: ./graylog-devopsmuc
+    image: graylog:devopsmuc-2019
+    hostname: graylog
+    container_name: graylog
+    mem_limit: 2g
+    user: graylog
+    environment:
+      - "GRAYLOG_SERVER_JAVA_OPTS=-Xms1g -Xmx1g -XX:NewRatio=1 -XX:MaxMetaspaceSize=192m -server -XX:+ResizeTLAB -XX:+UseConcMarkSweepGC -XX:+CMSConcurrentMTEnabled -XX:+CMSClassUnloadingEnabled -XX:+UseParNewGC -XX:-OmitStackTraceInFastThrow"
+      - GRAYLOG_PASSWORD_SECRET=Servus_DevOps_Munich_2019
+      # Password: admin
+      - GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
+      - GRAYLOG_HTTP_BIND_ADDRESS=0.0.0.0:9000
+      - GRAYLOG_HTTP_PUBLISH_URI=http://127.0.0.1:9000
+    ports:
+      # Graylog web interface and REST API
+      - 9000:9000
+      # Beats
+      - 5044:5044
+      # Raw/Plaintext TCP
+      - 5555:5555
+      # Syslog UDP
+      - 1514:1514/udp
+      # GELF TCP
+      - 12201:12201
+      # GELF UDP
+      - 12201:12201/udp
+    depends_on:
+      - mongo
+      - elasticsearch
+    links:
+      - mongo
+      - elasticsearch
+    volumes:
+      - ./node-id:/usr/share/graylog/data/config/node-id
+    networks:
+      graylog.net:
+        ipv4_address: 10.22.33.100
+  metricbeat:
+    build: ./debian-sidecar
+    image: debian-sidecar:devopsmuc-2019
+    hostname: metricbeat
+    container_name: metricbeat
+    mem_limit: 128m
+    volumes:
+      - ./sidecar-metricbeat.yml:/etc/graylog/sidecar/sidecar.yml
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - graylog.net
+  filebeat:
+    image: debian-sidecar:devopsmuc-2019
+    hostname: filebeat
+    container_name: filebeat
+    mem_limit: 128m
+    volumes:
+      - ./sidecar-filebeat.yml:/etc/graylog/sidecar/sidecar.yml
+      - graylog.data.flog:/var/log
+    networks:
+      - graylog.net
+  flog_apache:
+    image: mingrammer/flog:0.2.4
+    container_name: flog_apache
+    mem_limit: 32m
+    command: ["-f", "apache_combined", "-d", "1", "-l", "-w", "-o", "/var/log/access_log", "-t", "log"]
+    volumes:
+      - graylog.data.flog:/var/log

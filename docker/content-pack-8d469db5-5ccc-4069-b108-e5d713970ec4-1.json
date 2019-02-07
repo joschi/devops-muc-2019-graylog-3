@@ -1,0 +1,1865 @@
+{
+  "v": 1,
+  "id": "8d469db5-5ccc-4069-b108-e5d713970ec4",
+  "rev": 1,
+  "name": "DevOps Munich",
+  "summary": "Content Pack for DevOps Munich Feb 7, 2019",
+  "description": "",
+  "vendor": "Jochen",
+  "url": "",
+  "parameters": [
+    {
+      "name": "BEATS_PORT",
+      "title": "Beats Input Port",
+      "description": "Port for the Beats input (default: 5044)",
+      "type": "integer",
+      "default_value": 5044
+    }
+  ],
+  "entities": [
+    {
+      "v": "1",
+      "type": {
+        "name": "lookup_adapter",
+        "version": "1"
+      },
+      "id": "3b767db3-2b9f-4db5-a729-47b36a3c252c",
+      "data": {
+        "name": {
+          "@type": "string",
+          "@value": "geoip"
+        },
+        "title": {
+          "@type": "string",
+          "@value": "GeoLite2-City"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "configuration": {
+          "type": {
+            "@type": "string",
+            "@value": "maxmind_geoip"
+          },
+          "path": {
+            "@type": "string",
+            "@value": "/var/lib/maxmind/GeoLite2-City.mmdb"
+          },
+          "database_type": {
+            "@type": "string",
+            "@value": "MAXMIND_CITY"
+          },
+          "check_interval": {
+            "@type": "long",
+            "@value": 0
+          },
+          "check_interval_unit": {
+            "@type": "string",
+            "@value": "MINUTES"
+          }
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "dashboard",
+        "version": "1"
+      },
+      "id": "97bc313a-5960-4356-962e-7681200767d2",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "Docker"
+        },
+        "description": {
+          "@type": "string",
+          "@value": "Docker"
+        },
+        "widgets": [
+          {
+            "id": {
+              "@type": "string",
+              "@value": "1186f997-0d62-443b-b9a8-efdbeaae020f"
+            },
+            "description": {
+              "@type": "string",
+              "@value": "Running/Paused/Stopped Containers"
+            },
+            "type": {
+              "@type": "string",
+              "@value": "STACKED_CHART"
+            },
+            "cache_time": {
+              "@type": "integer",
+              "@value": 10
+            },
+            "time_range": {
+              "type": {
+                "@type": "string",
+                "@value": "relative"
+              },
+              "range": {
+                "@type": "integer",
+                "@value": 1800
+              }
+            },
+            "configuration": {
+              "interval": {
+                "@type": "string",
+                "@value": "minute"
+              },
+              "timerange": {
+                "type": {
+                  "@type": "string",
+                  "@value": "relative"
+                },
+                "range": {
+                  "@type": "integer",
+                  "@value": 1800
+                }
+              },
+              "renderer": {
+                "@type": "string",
+                "@value": "line"
+              },
+              "interpolation": {
+                "@type": "string",
+                "@value": "linear"
+              },
+              "series": []
+            },
+            "position": {
+              "width": {
+                "@type": "integer",
+                "@value": 4
+              },
+              "height": {
+                "@type": "integer",
+                "@value": 4
+              },
+              "row": {
+                "@type": "integer",
+                "@value": 1
+              },
+              "col": {
+                "@type": "integer",
+                "@value": 1
+              }
+            }
+          },
+          {
+            "id": {
+              "@type": "string",
+              "@value": "2ff7191d-6957-4bb0-80df-332ea4887b49"
+            },
+            "description": {
+              "@type": "string",
+              "@value": "Container IP Addresses"
+            },
+            "type": {
+              "@type": "string",
+              "@value": "QUICKVALUES"
+            },
+            "cache_time": {
+              "@type": "integer",
+              "@value": 10
+            },
+            "time_range": {
+              "type": {
+                "@type": "string",
+                "@value": "relative"
+              },
+              "range": {
+                "@type": "integer",
+                "@value": 1800
+              }
+            },
+            "configuration": {
+              "query": {
+                "@type": "string",
+                "@value": ""
+              },
+              "show_pie_chart": {
+                "@type": "boolean",
+                "@value": false
+              },
+              "sort_order": {
+                "@type": "string",
+                "@value": "desc"
+              },
+              "timerange": {
+                "type": {
+                  "@type": "string",
+                  "@value": "relative"
+                },
+                "range": {
+                  "@type": "integer",
+                  "@value": 1800
+                }
+              },
+              "stacked_fields": {
+                "@type": "string",
+                "@value": ""
+              },
+              "data_table_limit": {
+                "@type": "integer",
+                "@value": 10
+              },
+              "field": {
+                "@type": "string",
+                "@value": "metricbeat_docker_container_ip_addresses"
+              },
+              "show_data_table": {
+                "@type": "boolean",
+                "@value": true
+              },
+              "limit": {
+                "@type": "integer",
+                "@value": 10
+              }
+            },
+            "position": {
+              "width": {
+                "@type": "integer",
+                "@value": 2
+              },
+              "height": {
+                "@type": "integer",
+                "@value": 4
+              },
+              "row": {
+                "@type": "integer",
+                "@value": 1
+              },
+              "col": {
+                "@type": "integer",
+                "@value": 5
+              }
+            }
+          },
+          {
+            "id": {
+              "@type": "string",
+              "@value": "7e5ef238-9a23-4112-b6d8-9831c6bbd9f6"
+            },
+            "description": {
+              "@type": "string",
+              "@value": "Docker Images"
+            },
+            "type": {
+              "@type": "string",
+              "@value": "QUICKVALUES"
+            },
+            "cache_time": {
+              "@type": "integer",
+              "@value": 10
+            },
+            "time_range": {
+              "type": {
+                "@type": "string",
+                "@value": "relative"
+              },
+              "range": {
+                "@type": "integer",
+                "@value": 1800
+              }
+            },
+            "configuration": {
+              "query": {
+                "@type": "string",
+                "@value": ""
+              },
+              "show_pie_chart": {
+                "@type": "boolean",
+                "@value": false
+              },
+              "sort_order": {
+                "@type": "string",
+                "@value": "desc"
+              },
+              "timerange": {
+                "type": {
+                  "@type": "string",
+                  "@value": "relative"
+                },
+                "range": {
+                  "@type": "integer",
+                  "@value": 1800
+                }
+              },
+              "stacked_fields": {
+                "@type": "string",
+                "@value": ""
+              },
+              "data_table_limit": {
+                "@type": "integer",
+                "@value": 50
+              },
+              "field": {
+                "@type": "string",
+                "@value": "metricbeat_docker_container_image"
+              },
+              "show_data_table": {
+                "@type": "boolean",
+                "@value": true
+              },
+              "limit": {
+                "@type": "integer",
+                "@value": 5
+              }
+            },
+            "position": {
+              "width": {
+                "@type": "integer",
+                "@value": 2
+              },
+              "height": {
+                "@type": "integer",
+                "@value": 4
+              },
+              "row": {
+                "@type": "integer",
+                "@value": 1
+              },
+              "col": {
+                "@type": "integer",
+                "@value": 7
+              }
+            }
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline",
+        "version": "1"
+      },
+      "id": "648af697-aa4a-4dba-bd83-9003be0ec0d7",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "Apache Logs"
+        },
+        "description": {
+          "@type": "string",
+          "@value": "Apache httpd logs"
+        },
+        "source": {
+          "@type": "string",
+          "@value": "pipeline \"Apache Logs\"\nstage 0 match either\nrule \"geoip-lookup\"\nend"
+        },
+        "connected_streams": [
+          {
+            "@type": "string",
+            "@value": "4dc7bf9b-c410-4268-a27f-724582c87b44"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "5b23dfdd-ca81-40c0-b0f4-30ae4b21b4a7",
+      "data": {
+        "name": "COMBINEDAPACHELOG_FLOG",
+        "pattern": "%{IPORHOST:clientip} %{HTTPDUSER:ident} %{USER:auth} %{INT:auth_id} \\[%{TIMESTAMP_ISO8601:timestamp}\\] \"(?:%{WORD:verb} %{NOTSPACE:request}(?: HTTP/%{NUMBER:httpversion})?|%{DATA:rawrequest})\" %{NUMBER:response;short} (?:%{NUMBER:bytes;long}|-) %{QS:referrer} %{QS:agent}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "lookup_table",
+        "version": "1"
+      },
+      "id": "57958eb5-ee82-49b5-9363-269e00d91546",
+      "data": {
+        "default_single_value_type": {
+          "@type": "string",
+          "@value": "NULL"
+        },
+        "cache_name": {
+          "@type": "string",
+          "@value": "a18bf844-7993-4b92-84db-3a627906818f"
+        },
+        "name": {
+          "@type": "string",
+          "@value": "geoip"
+        },
+        "default_multi_value_type": {
+          "@type": "string",
+          "@value": "OBJECT"
+        },
+        "default_multi_value": {
+          "@type": "string",
+          "@value": "{\"location\":{\"latitude\":0.0,\"longitude\":0.0}}"
+        },
+        "data_adapter_name": {
+          "@type": "string",
+          "@value": "3b767db3-2b9f-4db5-a729-47b36a3c252c"
+        },
+        "title": {
+          "@type": "string",
+          "@value": "GeoIP Lookup by City"
+        },
+        "default_single_value": {
+          "@type": "string",
+          "@value": ""
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "sidecar_collector_configuration",
+        "version": "1"
+      },
+      "id": "fc559e38-f136-475b-abe3-a0e7656f9e0c",
+      "data": {
+        "collector_id": {
+          "@type": "string",
+          "@value": "d9411fc3-27cb-4938-b6b6-c79805cb9d0f"
+        },
+        "title": {
+          "@type": "string",
+          "@value": "Metricbeat Demo"
+        },
+        "color": {
+          "@type": "string",
+          "@value": "#b71c1c"
+        },
+        "template": {
+          "@type": "string",
+          "@value": "# Needed for Graylog\nfields_under_root: true\nfields.collector_node_id: ${sidecar.nodeName}\nfields.gl2_source_collector: ${sidecar.nodeId}\n\nmetricbeat.modules:\n- module: system\n  metricsets:\n    - cpu\n    - load\n    - memory\n    - uptime\n  enabled: true\n  period: 10s\n  processes: ['.*']\n- module: docker\n  metricsets:\n    - \"container\"\n    - \"info\"\n  hosts: [\"unix:///var/run/docker.sock\"]\n  period: 10s\n  enabled: true\n\noutput.logstash:\n   hosts: [\"10.22.33.100:5044\"]\npath:\n  data: /var/lib/graylog-sidecar/collectors/metricbeat/data\n  logs: /var/lib/graylog-sidecar/collectors/metricbeat/log"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "stream",
+        "version": "1"
+      },
+      "id": "4dc7bf9b-c410-4268-a27f-724582c87b44",
+      "data": {
+        "alarm_callbacks": [],
+        "outputs": [],
+        "remove_matches": {
+          "@type": "boolean",
+          "@value": true
+        },
+        "title": {
+          "@type": "string",
+          "@value": "Apache Logs"
+        },
+        "stream_rules": [
+          {
+            "type": {
+              "@type": "string",
+              "@value": "EXACT"
+            },
+            "field": {
+              "@type": "string",
+              "@value": "source"
+            },
+            "value": {
+              "@type": "string",
+              "@value": "filebeat"
+            },
+            "inverted": {
+              "@type": "boolean",
+              "@value": false
+            },
+            "description": {
+              "@type": "string",
+              "@value": ""
+            }
+          }
+        ],
+        "alert_conditions": [
+          {
+            "type": "message_count",
+            "title": {
+              "@type": "string",
+              "@value": "HTTP 500"
+            },
+            "parameters": {
+              "backlog": {
+                "@type": "integer",
+                "@value": 0
+              },
+              "repeat_notifications": {
+                "@type": "boolean",
+                "@value": false
+              },
+              "query": {
+                "@type": "string",
+                "@value": "response:500"
+              },
+              "grace": {
+                "@type": "integer",
+                "@value": 0
+              },
+              "threshold_type": {
+                "@type": "string",
+                "@value": "MORE"
+              },
+              "threshold": {
+                "@type": "integer",
+                "@value": 4
+              },
+              "time": {
+                "@type": "integer",
+                "@value": 5
+              }
+            }
+          }
+        ],
+        "matching_type": {
+          "@type": "string",
+          "@value": "AND"
+        },
+        "disabled": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "description": {
+          "@type": "string",
+          "@value": "Apache httpd logs"
+        },
+        "default_stream": {
+          "@type": "boolean",
+          "@value": false
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "dashboard",
+        "version": "1"
+      },
+      "id": "0fd869d2-97b8-4c0f-96ca-62216e4e0ffa",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "Apache Logs"
+        },
+        "description": {
+          "@type": "string",
+          "@value": "Apache Logs"
+        },
+        "widgets": [
+          {
+            "id": {
+              "@type": "string",
+              "@value": "3cfe5559-c682-4545-a21d-2a6bf815625f"
+            },
+            "description": {
+              "@type": "string",
+              "@value": "Response status"
+            },
+            "type": {
+              "@type": "string",
+              "@value": "QUICKVALUES"
+            },
+            "cache_time": {
+              "@type": "integer",
+              "@value": 10
+            },
+            "time_range": {
+              "type": {
+                "@type": "string",
+                "@value": "relative"
+              },
+              "range": {
+                "@type": "integer",
+                "@value": 300
+              }
+            },
+            "configuration": {
+              "query": {
+                "@type": "string",
+                "@value": ""
+              },
+              "show_pie_chart": {
+                "@type": "boolean",
+                "@value": true
+              },
+              "sort_order": {
+                "@type": "string",
+                "@value": "desc"
+              },
+              "timerange": {
+                "type": {
+                  "@type": "string",
+                  "@value": "relative"
+                },
+                "range": {
+                  "@type": "integer",
+                  "@value": 300
+                }
+              },
+              "stacked_fields": {
+                "@type": "string",
+                "@value": ""
+              },
+              "data_table_limit": {
+                "@type": "integer",
+                "@value": 50
+              },
+              "field": {
+                "@type": "string",
+                "@value": "response"
+              },
+              "stream_id": {
+                "@type": "string",
+                "@value": "4dc7bf9b-c410-4268-a27f-724582c87b44"
+              },
+              "show_data_table": {
+                "@type": "boolean",
+                "@value": true
+              },
+              "limit": {
+                "@type": "integer",
+                "@value": 5
+              }
+            },
+            "position": {
+              "width": {
+                "@type": "integer",
+                "@value": 4
+              },
+              "height": {
+                "@type": "integer",
+                "@value": 6
+              },
+              "row": {
+                "@type": "integer",
+                "@value": 7
+              },
+              "col": {
+                "@type": "integer",
+                "@value": 1
+              }
+            }
+          },
+          {
+            "id": {
+              "@type": "string",
+              "@value": "5224cc5e-b0f0-4a13-8c6d-acd33501cddc"
+            },
+            "description": {
+              "@type": "string",
+              "@value": "Client Location"
+            },
+            "type": {
+              "@type": "string",
+              "@value": "org.graylog.plugins.map.widget.strategy.MapWidgetStrategy"
+            },
+            "cache_time": {
+              "@type": "integer",
+              "@value": 10
+            },
+            "time_range": {
+              "type": {
+                "@type": "string",
+                "@value": "relative"
+              },
+              "range": {
+                "@type": "integer",
+                "@value": 3600
+              }
+            },
+            "configuration": {
+              "timerange": {
+                "type": {
+                  "@type": "string",
+                  "@value": "relative"
+                },
+                "range": {
+                  "@type": "integer",
+                  "@value": 3600
+                }
+              },
+              "field": {
+                "@type": "string",
+                "@value": "coordinates"
+              },
+              "stream_id": {
+                "@type": "string",
+                "@value": "4dc7bf9b-c410-4268-a27f-724582c87b44"
+              },
+              "query": {
+                "@type": "string",
+                "@value": ""
+              }
+            },
+            "position": {
+              "width": {
+                "@type": "integer",
+                "@value": 4
+              },
+              "height": {
+                "@type": "integer",
+                "@value": 6
+              },
+              "row": {
+                "@type": "integer",
+                "@value": 1
+              },
+              "col": {
+                "@type": "integer",
+                "@value": 5
+              }
+            }
+          },
+          {
+            "id": {
+              "@type": "string",
+              "@value": "0e389fc4-e97e-4810-8972-8f4512be388b"
+            },
+            "description": {
+              "@type": "string",
+              "@value": "Top Cities"
+            },
+            "type": {
+              "@type": "string",
+              "@value": "QUICKVALUES"
+            },
+            "cache_time": {
+              "@type": "integer",
+              "@value": 10
+            },
+            "time_range": {
+              "type": {
+                "@type": "string",
+                "@value": "relative"
+              },
+              "range": {
+                "@type": "integer",
+                "@value": 3600
+              }
+            },
+            "configuration": {
+              "query": {
+                "@type": "string",
+                "@value": ""
+              },
+              "show_pie_chart": {
+                "@type": "boolean",
+                "@value": false
+              },
+              "sort_order": {
+                "@type": "string",
+                "@value": "desc"
+              },
+              "timerange": {
+                "type": {
+                  "@type": "string",
+                  "@value": "relative"
+                },
+                "range": {
+                  "@type": "integer",
+                  "@value": 3600
+                }
+              },
+              "stacked_fields": {
+                "@type": "string",
+                "@value": ""
+              },
+              "data_table_limit": {
+                "@type": "integer",
+                "@value": 10
+              },
+              "field": {
+                "@type": "string",
+                "@value": "city"
+              },
+              "stream_id": {
+                "@type": "string",
+                "@value": "4dc7bf9b-c410-4268-a27f-724582c87b44"
+              },
+              "show_data_table": {
+                "@type": "boolean",
+                "@value": true
+              },
+              "limit": {
+                "@type": "integer",
+                "@value": 5
+              }
+            },
+            "position": {
+              "width": {
+                "@type": "integer",
+                "@value": 2
+              },
+              "height": {
+                "@type": "integer",
+                "@value": 6
+              },
+              "row": {
+                "@type": "integer",
+                "@value": 1
+              },
+              "col": {
+                "@type": "integer",
+                "@value": 1
+              }
+            }
+          },
+          {
+            "id": {
+              "@type": "string",
+              "@value": "2bdd8757-c12d-412d-9a9a-dbfdd3d9ba49"
+            },
+            "description": {
+              "@type": "string",
+              "@value": "Top Countries"
+            },
+            "type": {
+              "@type": "string",
+              "@value": "QUICKVALUES"
+            },
+            "cache_time": {
+              "@type": "integer",
+              "@value": 10
+            },
+            "time_range": {
+              "type": {
+                "@type": "string",
+                "@value": "relative"
+              },
+              "range": {
+                "@type": "integer",
+                "@value": 3600
+              }
+            },
+            "configuration": {
+              "query": {
+                "@type": "string",
+                "@value": ""
+              },
+              "show_pie_chart": {
+                "@type": "boolean",
+                "@value": true
+              },
+              "sort_order": {
+                "@type": "string",
+                "@value": "desc"
+              },
+              "timerange": {
+                "type": {
+                  "@type": "string",
+                  "@value": "relative"
+                },
+                "range": {
+                  "@type": "integer",
+                  "@value": 3600
+                }
+              },
+              "stacked_fields": {
+                "@type": "string",
+                "@value": ""
+              },
+              "data_table_limit": {
+                "@type": "integer",
+                "@value": 10
+              },
+              "field": {
+                "@type": "string",
+                "@value": "country"
+              },
+              "stream_id": {
+                "@type": "string",
+                "@value": "4dc7bf9b-c410-4268-a27f-724582c87b44"
+              },
+              "show_data_table": {
+                "@type": "boolean",
+                "@value": true
+              },
+              "limit": {
+                "@type": "integer",
+                "@value": 5
+              }
+            },
+            "position": {
+              "width": {
+                "@type": "integer",
+                "@value": 2
+              },
+              "height": {
+                "@type": "integer",
+                "@value": 6
+              },
+              "row": {
+                "@type": "integer",
+                "@value": 1
+              },
+              "col": {
+                "@type": "integer",
+                "@value": 3
+              }
+            }
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "lookup_cache",
+        "version": "1"
+      },
+      "id": "a18bf844-7993-4b92-84db-3a627906818f",
+      "data": {
+        "name": {
+          "@type": "string",
+          "@value": "no-op"
+        },
+        "title": {
+          "@type": "string",
+          "@value": "No-Op"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "configuration": {
+          "type": {
+            "@type": "string",
+            "@value": "none"
+          }
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "report",
+        "version": "1"
+      },
+      "id": "cea4b605-ae1b-43c2-b26c-edd1a113f969",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "DevOps Munich 2019"
+        },
+        "subtitle": {
+          "@type": "string",
+          "@value": "My shiny subtitle"
+        },
+        "logo": "data:image/png;base64,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",
+        "description": {
+          "@type": "string",
+          "@value": "Some description. Yay!"
+        },
+        "widgets": [
+          {
+            "dashboard_widget_id": {
+              "@type": "string",
+              "@value": "5224cc5e-b0f0-4a13-8c6d-acd33501cddc"
+            },
+            "dashboard_id": {
+              "@type": "string",
+              "@value": "0fd869d2-97b8-4c0f-96ca-62216e4e0ffa"
+            }
+          },
+          {
+            "dashboard_widget_id": {
+              "@type": "string",
+              "@value": "0e389fc4-e97e-4810-8972-8f4512be388b"
+            },
+            "dashboard_id": {
+              "@type": "string",
+              "@value": "0fd869d2-97b8-4c0f-96ca-62216e4e0ffa"
+            }
+          },
+          {
+            "dashboard_widget_id": {
+              "@type": "string",
+              "@value": "2bdd8757-c12d-412d-9a9a-dbfdd3d9ba49"
+            },
+            "dashboard_id": {
+              "@type": "string",
+              "@value": "0fd869d2-97b8-4c0f-96ca-62216e4e0ffa"
+            }
+          }
+        ],
+        "positions": [
+          {
+            "dashboard_widget_id": {
+              "@type": "string",
+              "@value": "5224cc5e-b0f0-4a13-8c6d-acd33501cddc"
+            },
+            "col": {
+              "@type": "integer",
+              "@value": 1
+            },
+            "row": {
+              "@type": "integer",
+              "@value": 1
+            }
+          },
+          {
+            "dashboard_widget_id": {
+              "@type": "string",
+              "@value": "0e389fc4-e97e-4810-8972-8f4512be388b"
+            },
+            "col": {
+              "@type": "integer",
+              "@value": 1
+            },
+            "row": {
+              "@type": "integer",
+              "@value": 3
+            }
+          },
+          {
+            "dashboard_widget_id": {
+              "@type": "string",
+              "@value": "2bdd8757-c12d-412d-9a9a-dbfdd3d9ba49"
+            },
+            "col": {
+              "@type": "integer",
+              "@value": 1
+            },
+            "row": {
+              "@type": "integer",
+              "@value": 5
+            }
+          }
+        ],
+        "scheduling": {
+          "active": {
+            "@type": "boolean",
+            "@value": false
+          },
+          "frequency": null,
+          "frequency_configuration": null,
+          "email_subject": null,
+          "email_body": null,
+          "user_receivers": [],
+          "email_receivers": []
+        }
+      },
+      "constraints": [
+        {
+          "type": "plugin-version",
+          "plugin": "org.graylog.plugins.enterprise.EnterprisePlugin",
+          "version": ">=3.0.0-rc.2"
+        },
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline_rule",
+        "version": "1"
+      },
+      "id": "4e9c62e8-755d-4315-888f-51322f3a7f27",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "geoip-lookup"
+        },
+        "description": {
+          "@type": "string",
+          "@value": "GeoIP lookup of client IP address"
+        },
+        "source": {
+          "@type": "string",
+          "@value": "rule \"geoip-lookup\"\nwhen\n  has_field(\"clientip\")\nthen\n  let result = lookup(\"geoip\", to_string($message.clientip));\n  let location = result.location;\n  let lat = to_string(location.latitude);\n  let lng = to_string(location.longitude);\n  let coordinates = concat(lat, concat(\",\", lng));\n  set_field(\"coordinates\", coordinates);\n  \n  let city = to_string(result.city.names.en);\n  let country = to_string(result.country.names.en);\n  let continent = to_string(result.continent.names.en);\n  set_field(\"city\", city);\n  set_field(\"country\", country);\n  set_field(\"continent\", continent);\nend"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "sidecar_collector_configuration",
+        "version": "1"
+      },
+      "id": "ab2c0a65-15e2-4e35-86a0-01ae4c2c0f79",
+      "data": {
+        "collector_id": {
+          "@type": "string",
+          "@value": "14b54e79-1d4c-4db4-b11d-2992d74670de"
+        },
+        "title": {
+          "@type": "string",
+          "@value": "Filebeat Demo"
+        },
+        "color": {
+          "@type": "string",
+          "@value": "#FFFFFF"
+        },
+        "template": {
+          "@type": "string",
+          "@value": "# Needed for Graylog\nfields_under_root: true\nfields.collector_node_id: ${sidecar.nodeName}\nfields.gl2_source_collector: ${sidecar.nodeId}\n\nfilebeat.inputs:\n- input_type: log\n  paths:\n    - /var/log/access_log\n  type: log\noutput.logstash:\n   hosts: [\"10.22.33.100:5044\"]\npath:\n  data: /var/lib/graylog-sidecar/collectors/filebeat/data\n  logs: /var/lib/graylog-sidecar/collectors/filebeat/log"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "input",
+        "version": "1"
+      },
+      "id": "2989f59a-4e62-495d-9486-4b5a68210883",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "Beats"
+        },
+        "configuration": {
+          "tls_key_file": {
+            "@type": "string",
+            "@value": ""
+          },
+          "port": {
+            "@value": "BEATS_PORT",
+            "@type": "parameter"
+          },
+          "tls_enable": {
+            "@type": "boolean",
+            "@value": false
+          },
+          "recv_buffer_size": {
+            "@type": "integer",
+            "@value": 1048576
+          },
+          "tcp_keepalive": {
+            "@type": "boolean",
+            "@value": false
+          },
+          "tls_client_auth_cert_file": {
+            "@type": "string",
+            "@value": ""
+          },
+          "bind_address": {
+            "@type": "string",
+            "@value": "0.0.0.0"
+          },
+          "no_beats_prefix": {
+            "@type": "boolean",
+            "@value": false
+          },
+          "tls_cert_file": {
+            "@type": "string",
+            "@value": ""
+          },
+          "tls_client_auth": {
+            "@type": "string",
+            "@value": "disabled"
+          },
+          "number_worker_threads": {
+            "@type": "integer",
+            "@value": 4
+          },
+          "tls_key_password": {
+            "@type": "string",
+            "@value": ""
+          }
+        },
+        "static_fields": {},
+        "type": {
+          "@type": "string",
+          "@value": "org.graylog.plugins.beats.Beats2Input"
+        },
+        "global": {
+          "@type": "boolean",
+          "@value": true
+        },
+        "extractors": [
+          {
+            "target_field": {
+              "@type": "string",
+              "@value": ""
+            },
+            "condition_value": {
+              "@type": "string",
+              "@value": ""
+            },
+            "order": {
+              "@type": "integer",
+              "@value": 0
+            },
+            "converters": [],
+            "configuration": {
+              "grok_pattern": {
+                "@type": "string",
+                "@value": "%{COMBINEDAPACHELOG_FLOG}"
+              },
+              "named_captures_only": {
+                "@type": "boolean",
+                "@value": true
+              }
+            },
+            "source_field": {
+              "@type": "string",
+              "@value": "message"
+            },
+            "title": {
+              "@type": "string",
+              "@value": "Apache Logs"
+            },
+            "type": {
+              "@type": "string",
+              "@value": "GROK"
+            },
+            "cursor_strategy": {
+              "@type": "string",
+              "@value": "COPY"
+            },
+            "condition_type": {
+              "@type": "string",
+              "@value": "NONE"
+            }
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "sidecar_collector",
+        "version": "1"
+      },
+      "id": "d9411fc3-27cb-4938-b6b6-c79805cb9d0f",
+      "data": {
+        "name": {
+          "@type": "string",
+          "@value": "metricbeat"
+        },
+        "service_type": {
+          "@type": "string",
+          "@value": "exec"
+        },
+        "node_operating_system": {
+          "@type": "string",
+          "@value": "linux"
+        },
+        "executable_path": {
+          "@type": "string",
+          "@value": "/usr/bin/metricbeat"
+        },
+        "execute_parameters": {
+          "@type": "string",
+          "@value": "-c  %s"
+        },
+        "validation_parameters": {
+          "@type": "string",
+          "@value": "test config -c %s"
+        },
+        "default_template": {
+          "@type": "string",
+          "@value": "# Needed for Graylog\nfields_under_root: true\nfields.collector_node_id: ${sidecar.nodeName}\nfields.gl2_source_collector: ${sidecar.nodeId}\n\nmetricbeat.modules:\n- module: system\n  metricsets:\n    - cpu\n    - load\n    - memory\n    - uptime\n  enabled: true\n  period: 10s\n  processes: ['.*']\n- module: docker\n  metricsets:\n    - \"container\"\n    - \"info\"\n  hosts: [\"unix:///var/run/docker.sock\"]\n  period: 10s\n  enabled: true\n\noutput.logstash:\n   hosts: [\"10.22.33.100:5044\"]\npath:\n  data: /var/lib/graylog-sidecar/collectors/metricbeat/data\n  logs: /var/lib/graylog-sidecar/collectors/metricbeat/log"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "sidecar_collector",
+        "version": "1"
+      },
+      "id": "14b54e79-1d4c-4db4-b11d-2992d74670de",
+      "data": {
+        "name": {
+          "@type": "string",
+          "@value": "filebeat_apache"
+        },
+        "service_type": {
+          "@type": "string",
+          "@value": "exec"
+        },
+        "node_operating_system": {
+          "@type": "string",
+          "@value": "linux"
+        },
+        "executable_path": {
+          "@type": "string",
+          "@value": "/usr/bin/filebeat"
+        },
+        "execute_parameters": {
+          "@type": "string",
+          "@value": "-c  %s"
+        },
+        "validation_parameters": {
+          "@type": "string",
+          "@value": "test config -c %s"
+        },
+        "default_template": {
+          "@type": "string",
+          "@value": "# Needed for Graylog\nfields_under_root: true\nfields.collector_node_id: ${sidecar.nodeName}\nfields.gl2_source_collector: ${sidecar.nodeId}\n\nfilebeat.inputs:\n- input_type: log\n  paths:\n    - /var/log/access_log\n  type: log\noutput.logstash:\n   hosts: [\"10.22.33.100:5044\"]\npath:\n  data: /var/lib/graylog-sidecar/collectors/filebeat/data\n  logs: /var/lib/graylog-sidecar/collectors/filebeat/log"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "de16b8cf-18ce-44b3-b351-a26600083355",
+      "data": {
+        "name": "HTTPDUSER",
+        "pattern": "%{EMAILADDRESS}|%{USER}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "a28c5eae-e03d-42c6-9637-44144768154d",
+      "data": {
+        "name": "WORD",
+        "pattern": "\\b\\w+\\b"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "90131f9b-7d0f-4a2d-8ff1-2d4e39aa44db",
+      "data": {
+        "name": "NUMBER",
+        "pattern": "(?:%{BASE10NUM})"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "5a6b382f-1800-4fc3-adb6-9013b726a336",
+      "data": {
+        "name": "QS",
+        "pattern": "%{QUOTEDSTRING}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "3b6854bc-75bf-47a5-a183-fd0576090a53",
+      "data": {
+        "name": "TIMESTAMP_ISO8601",
+        "pattern": "%{YEAR}-%{MONTHNUM}-%{MONTHDAY}[T ]%{HOUR}:?%{MINUTE}(?::?%{SECOND})?%{ISO8601_TIMEZONE}?"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "7c2adec8-0e16-4f67-8a4a-8c99556e2d8a",
+      "data": {
+        "name": "NOTSPACE",
+        "pattern": "\\S+"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "8fb5583c-370a-4150-b478-6ded6ea8b043",
+      "data": {
+        "name": "DATA",
+        "pattern": ".*?"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "cea2fa39-a092-4e8d-a3fc-6405695ed7e1",
+      "data": {
+        "name": "USER",
+        "pattern": "%{USERNAME}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "247a8bc4-8972-4f70-ac04-205e7a2e869f",
+      "data": {
+        "name": "IPORHOST",
+        "pattern": "(?:%{IP}|%{HOSTNAME})"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "77308e70-9923-406a-ab8c-1f3ec831a3cb",
+      "data": {
+        "name": "INT",
+        "pattern": "(?:[+-]?(?:[0-9]+))"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "d6b34e8b-8281-4fec-94a0-1a80e6d9add1",
+      "data": {
+        "name": "EMAILADDRESS",
+        "pattern": "%{EMAILLOCALPART}@%{HOSTNAME}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "f2ba5666-db60-4d68-b4a3-1584535100ab",
+      "data": {
+        "name": "BASE10NUM",
+        "pattern": "(?<![0-9.+-])(?>[+-]?(?:(?:[0-9]+(?:\\.[0-9]+)?)|(?:\\.[0-9]+)))"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "abfeb2ee-3d81-4f91-b082-8f697c22e8d6",
+      "data": {
+        "name": "QUOTEDSTRING",
+        "pattern": "(?>(?<!\\\\)(?>\"(?>\\\\.|[^\\\\\"]+)+\"|\"\"|(?>'(?>\\\\.|[^\\\\']+)+')|''|(?>`(?>\\\\.|[^\\\\`]+)+`)|``))"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "efbc85e8-5a20-4409-9c9f-2288c35fda80",
+      "data": {
+        "name": "YEAR",
+        "pattern": "(?>\\d\\d){1,2}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "32e6063a-fd25-48ff-a1e7-11e58d1abea7",
+      "data": {
+        "name": "MONTHNUM",
+        "pattern": "(?:0?[1-9]|1[0-2])"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "5ca91133-4fb5-4a0d-b8eb-876e0be463b5",
+      "data": {
+        "name": "HOUR",
+        "pattern": "(?:2[0123]|[01]?[0-9])"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "e8534100-9b2c-406d-8ff9-23c14296b99f",
+      "data": {
+        "name": "MINUTE",
+        "pattern": "(?:[0-5][0-9])"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "d279defc-0ebf-4103-aa5e-d5aa6464c349",
+      "data": {
+        "name": "SECOND",
+        "pattern": "(?:(?:[0-5]?[0-9]|60)(?:[:.,][0-9]+)?)"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "8e305200-3c8d-4420-ab46-ce556c050380",
+      "data": {
+        "name": "ISO8601_TIMEZONE",
+        "pattern": "(?:Z|[+-]%{HOUR}(?::?%{MINUTE}))"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "6db8c7d1-1ac0-4df6-af2d-05ad64f1dd9c",
+      "data": {
+        "name": "MONTHDAY",
+        "pattern": "(?:(?:0[1-9])|(?:[12][0-9])|(?:3[01])|[1-9])"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "b01fa032-ecce-4eda-9a6c-b21b404d0884",
+      "data": {
+        "name": "USERNAME",
+        "pattern": "[a-zA-Z0-9._-]+"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "260fb93f-c04b-400c-80f1-dce191a64c48",
+      "data": {
+        "name": "HOSTNAME",
+        "pattern": "\\b(?:[0-9A-Za-z][0-9A-Za-z-]{0,62})(?:\\.(?:[0-9A-Za-z][0-9A-Za-z-]{0,62}))*(\\.?|\\b)"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "ab41d342-4e70-4588-ad0a-9fd2d6ff6aca",
+      "data": {
+        "name": "IP",
+        "pattern": "(?:%{IPV6}|%{IPV4})"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "51bbe992-f086-4579-be8c-ae3553645d3a",
+      "data": {
+        "name": "EMAILLOCALPART",
+        "pattern": "[a-zA-Z][a-zA-Z0-9_.+-=:]+"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "1c36ae71-6e16-45d6-b1e0-b1146030ad61",
+      "data": {
+        "name": "IPV6",
+        "pattern": "((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:)))(%.+)?"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "5f395ff8-b043-4d4e-a8b5-e1d69dbf9e52",
+      "data": {
+        "name": "IPV4",
+        "pattern": "(?<![0-9])(?:(?:[0-1]?[0-9]{1,2}|2[0-4][0-9]|25[0-5])[.](?:[0-1]?[0-9]{1,2}|2[0-4][0-9]|25[0-5])[.](?:[0-1]?[0-9]{1,2}|2[0-4][0-9]|25[0-5])[.](?:[0-1]?[0-9]{1,2}|2[0-4][0-9]|25[0-5]))(?![0-9])"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.0.0-rc.2+2667ff2"
+        }
+      ]
+    }
+  ]
+}

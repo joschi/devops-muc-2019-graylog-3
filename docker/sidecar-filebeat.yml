@@ -1,0 +1,8 @@
+server_url: "http://10.22.33.100:9000/api/"
+server_api_token: "vakgj122p65cbv0111det1igtociq5j4tu3pemfjgpjbb3k1nke"
+node_id: "devopsmuc-2019-filebeat"
+#node_name: ""
+list_log_files:
+  - "/var/log"
+collector_binaries_whitelist:
+  - "/usr/bin/filebeat"

@@ -1,0 +1,28 @@
+= What's new in Graylog 3.0?
+
+* Slides: https://joschi.github.io/devops-muc-2019-graylog-3/slides/ (link:slides.pdf[Download PDF])
+
+== Build instructions
+
+* Install dependencies:
+
+  $ rm -f Gemfile.lock
+  $ bundle --path=.bundle/gems --binstubs=.bundle/.bin
+
+* Build slides:
+
+  $ make
+
+* Open slides in browser:
+
+  $ make open
+
+* PDF export: https://github.com/hakimel/reveal.js/tree/3.7.0#pdf-export
+  * https://joschi.github.io/devops-muc-2019-graylog-3/?print-pdf
+
+
+== Feedback
+
+If you have questions or feedback about the talk (slides or demo project), please https://github.com/joschi/devops-muc-2019-graylog-3/issues[file an issue in this repository].
+
+Any feedback is welcome!

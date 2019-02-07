@@ -1,0 +1,305 @@
+= What's new in Graylog 3.0?
+:backend: revealjs
+:imagesdir: images
+:icons: font
+:customcss: slides.css
+:revealjsdir: https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0
+:revealjs_theme: moon
+:revealjs_history: true
+:title-slide-background-image: log_truck.jpg
+
+
+== Popular vote 🤚
+
+Who's using…
+[%step]
+* Elastic Stack (ex-ELK)
+* Splunk
+* Some Logging SaaS (Loggly, Scalyr, etc.)
+* Graylog
+
+
+[background-video="images/tony-stark-question.mp4",background-video-loop=true,background-video-muted=true]
+== Why Centralized Logging?
+
+
+=== Debugging
+
+image::janl_tweet.png[Debugging, link="https://twitter.com/janl/status/785456374566223872"]
+
+
+=== Debugging (2)
+
+image::honest_update_tweet.png[Murder Mystery, link="https://twitter.com/honest_update/status/651897353889259521"]
+
+
+=== Security (1)
+
+[quote]
+____
+A theme in this article will be: "what separates standard incidents from horrifying nightmares?"
+
+A good or bad story around logging will dictate the rest of the incident.
+____
+https://medium.com/starting-up-security/learning-from-a-year-of-security-breaches-ed036ea05d9b[Learning From A Year of Security Breaches]
+
+
+=== Security (2)
+
+[quote]
+____
+I recommend that any security or infrastructure team putting off a comprehensive approach to logging drop nearly everything to invest in it.
+____
+https://medium.com/starting-up-security/learning-from-a-year-of-security-breaches-ed036ea05d9b[Learning From A Year of Security Breaches]
+
+
+=== Security (3)
+
+[quote]
+____
+A10:2017 Insufficient Logging & Monitoring
+
+Exploitation of insufficient logging and monitoring is the bedrock of nearly every major incident.
+____
+https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project[OWASP Top 10 2017]
+
+
+== Graylog
+
+[%step]
+* Open source log management platform
+* Built for security and operations
+* Easy to set up, powerful features
+* Extensible via plugins
+
+
+=== Graylog 💸
+
+[%step]
+* Commercial plugins (Audit log, Archiving, Reporting, Views)
+* Professional support
+* Link: https://www.graylog.org/enterprise[Graylog Enterprise]
+
+
+[%notitle]
+=== Graylog Enterprise Archiving
+
+image::graylog_archiving.png[background, size=contain]
+
+
+[%notitle]
+=== Graylog Enterprise Audit Logs
+
+image::graylog_auditlog.png[background, size=contain]
+
+
+=== Inputs
+
+* GELF
+* Beats (Filebeat, Metricbeat, etc.)
+* Syslog
+* CEF
+* Netflow (v5 and v9)
+
+
+=== Inputs (community)
+
+* Redis
+* MQTT
+* SNMP
+* AWS Flow Logs, Cloudwatch Logs, CloudTrail
+* Many more on the https://marketplace.graylog.org/[Graylog Marketplace]
+
+
+[%notitle]
+=== Graylog Marketplace (1)
+
+image::graylog_marketplace1.png[background, size=contain]
+
+
+[%notitle]
+=== Graylog Marketplace (2)
+
+image::graylog_marketplace2.png[background, size=contain]
+
+
+[%notitle]
+=== Graylog Community
+
+image::graylog_community.png[background, size=contain]
+
+
+[%notitle]
+=== Search
+
+image::graylog_search.png[background, size=contain]
+
+
+[%notitle]
+=== Dashboard (1)
+
+image::graylog_dashboard1.png[background, size=contain]
+
+
+[%notitle]
+=== Dashboard (2)
+
+image::graylog_dashboard2.png[background, size=contain]
+
+
+[%notitle]
+=== Dashboard (3)
+
+image::graylog_dashboard3.png[background, size=contain]
+
+
+[background-video="images/wiggling_cat.mp4",background-video-loop=true,background-video-muted=true]
+== 💥 Graylog 3.0
+
+
+=== 💥 Graylog Sidecar
+
+[%step]
+* Centralized config management for log shippers
+* Completely new implementation
+* Allows managing arbitrary binaries
+* Runs on Linux & Windows
+
+
+[%notitle]
+=== Graylog Sidecar (1)
+
+image::graylog_sidecars.png[background, size=contain]
+
+
+=== 💥 Grok Editor
+
+[%step]
+* Grok == Regular Expressions on Steroids
+* Sometimes hard to debug
+* No more external Grok Debugger
+* Grok editor now with preview and test
+
+
+[%notitle]
+=== Grok Editor (1)
+
+image::graylog_grok_pattern.png[background, size=contain]
+
+
+=== 💥 Content Packs 2.0
+
+[%step]
+* Sharing configuration between Graylog clusters
+* Allow using parameters
+* Versioning
+* Removal (uninstall)
+
+
+[%notitle]
+=== Content Packs (1)
+
+image::graylog_content_pack_1.png[background, size=contain]
+
+
+[%notitle]
+=== Content Packs (2)
+
+image::graylog_content_pack_2.png[background, size=contain]
+
+
+=== 💥 Views 💸
+
+[%step]
+* Interactive dashboards
+* Completely customizable
+* Can be saved and shared
+
+
+[%notitle]
+=== Views (1)
+
+image::graylog_views.png[background, size=contain]
+
+
+=== 💥 Reporting 💸
+
+[%step]
+* For your management team 😉
+* Create shiny reports (PDF)
+* Allows scheduling of report creation
+* Reports can automatically be sent via email
+
+
+[%notitle]
+=== Reporting (1)
+
+image::graylog_reporting.png[background, size=contain]
+
+
+== What's in a Graylog cluster?
+
+[%step]
+* Graylog
+* Elasticsearch 5.6 or higher
+* MongoDB 2.4 or higher
+* Optional: Graylog Collector Sidecar
+
+
+[%notitle]
+=== Graylog Architecture (1)
+
+image::graylog_setup1.png[background, size=contain]
+
+
+[%notitle]
+=== Graylog Architecture (2)
+
+image::graylog_setup2.png[background, size=contain]
+
+
+[%notitle]
+=== Graylog Collector Sidecar (Architecture)
+
+image::graylog_collector2.png[background, size=contain]
+
+
+=== Live Demo 😱
+
+http://localhost:9000/[Open Demo]
+
+
+== Questions? 🤔
+
+image::twinpeaks_loglady.jpg[background, size=cover]
+
+
+== Contact Details
+
+image::yoshi.png[Yoshi]
+icon:twitter[link="https://twitter.com/joschi83"] –
+icon:github[link="https://github.com/joschi"] –
+icon:linkedin[link="https://www.linkedin.com/in/jschalanda"] –
+icon:xing[link="https://www.xing.com/profile/Jochen_Schalanda"]
+
+
+[%notitle]
+[background-video="images/lstoll-654502442030235648.mp4",background-video-loop=true,background-video-muted=true]
+
+== Feierabend!
+
+
+== Additional Links
+
+* https://www.graylog.org/[Graylog]
+* http://docs.graylog.org/[Graylog Documentation]
+* https://marketplace.graylog.org/[Graylog Marketplace]
+* https://community.graylog.org/[Graylog Community Forums]
+
+
+== Image Credits
+
+* https://commons.wikimedia.org/wiki/File:Log_truck_(5494951495).jpg["Log Truck" by Oregon Department of Transportation is licensed under CC BY 2.0]
+* https://giphy.com/gifs/ask-blog-x3mnvL7qkrBcs[Tony Stark GIF at Giphy]
+* https://giphy.com/gifs/awkward-internship-gJIJjrdhO5OYo[Wiggeling Cat GIF at Giphy]
+* https://twitter.com/lstoll/status/654502442030235648[Lincoln Stoll (@lstoll)]
